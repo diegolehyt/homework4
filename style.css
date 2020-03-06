@@ -1,0 +1,36 @@
+.hide {
+    display: none;
+}
+
+.HS {
+    position: sticky;
+    margin-left: 50px;
+    display: inline-block;
+
+}
+
+.Timer {
+    position: sticky;
+    margin-left: 1000px;
+    display: inline-block;
+    
+}
+
+button {
+    background-color: blueviolet;
+    color: white;
+    display: block;
+}
+.container {
+    margin: auto;
+
+}
+.submit {
+    background-color: blueviolet;
+    color: white;
+
+}
+.listE {
+    background-color: lightgrey;
+
+}

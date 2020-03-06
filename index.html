@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <div id="HS" class="HS">HighScore</div>
+        <div class="Timer">Timer: <span>0</span></div>
+    </div>
+   <!-- Start Game -->
+    <div id= "main" class="container container-lg container-md container-sm">
+        <div class="row">
+          <!--Main Box-->
+            <div class="col-12 col-lg-12 col-md-12 col-sm-12">
+              
+                <h2>QUIZ</h2>
+                <hr>
+                  
+                <p>are you ready to take the quiz?</p>
+                <br>
+
+                <button id="startBtn">Start Quiz</button>
+                
+            </div>
+        </div>
+    </div>
+    <!-- Questions-->
+    <div id= "questions" class="container container-lg container-md container hide">
+        <div class="row">
+          <!--Main Box-->
+            <div class="col-12 col-lg-12 col-md-12 col-sm-12">
+              
+                <h2 id= "question">QUIZ Question</h2>
+                <hr>
+                <button id="btn1">1. answer</button>
+                <button>2. answer</button>
+                <button>3. answer</button>
+                <button>4. answer</button>
+                
+                <hr>
+                <p style="color: gray;">Correct! or Wrong!</p>
+
+                
+                
+            </div>
+        </div>
+    </div>
+      <!-- Start Game -->
+    <div id= "done" class="container container-lg container-md container-sm hide">
+        <div class="row">
+          <!--Main Box-->
+            <div class="col-12 col-lg-12 col-md-12 col-sm-12">
+              
+                <h2>ALL Done!</h2>
+                <hr>
+                  
+                <p>your score is <span> Score number </span></p>
+                <br>
+                <label for="lname">Enter your initials:</label>
+                <input type="text" id="initials" name="initials" onfocus="this.value=''" ><br><br>
+                <button id ="submit">submit</button>
+
+                
+                
+            </div>
+        </div>
+    </div>
+    <!-- Start Game -->
+    <div id= "highScores"  class="container container-lg container-md container-sm hide">
+        <div class="row">
+          <!--Main Box-->
+            <div class="col-12 col-lg-12 col-md-12 col-sm-12">
+              
+                <h2>HIGH SCORES</h2>
+                <hr>
+                <div id ="HSboard">
+                    
+                </div>
+                  
+        
+                <br>
+
+                <button id="goBack">Go Back</button>
+                <button>Clear HighScores</button>
+                
+            </div>
+        </div>
+    </div>
+<script src="script.js"></script>   
+</body>
+</html>
