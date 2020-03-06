@@ -1,13 +1,13 @@
+//-------------------------------------------------part 1-------------------------------------------------------------------
 //var buttons
 let startBtn = document.getElementById("startBtn")
-//let btn1 = document.getElementById('btn1')
 let submit = document.getElementById("submit")
 let goBackBtn = document.getElementById("goBack")
 let HSbtn = document.getElementById("HS")
 
 //general Var
 let score = 0;
-let time = 60000;
+let time = 60;
 
 //var Container Elements
 let mainContainer = document.getElementById("main")
@@ -25,13 +25,25 @@ let Q = [obj = {question : 'pregunta 1?', answers : ['java', 'python', 'c++', 'h
          obj = {question : 'pregunta 4?', answers : ['up', 'down', 'left', 'right', 'right']}]
 
 
-//Functions
+//-------------------------------------------------------part 2 ----------------------------------------------------
+
 //Question Container
 let startGame = function (){
     mainContainer.classList.add('hide');
-    questionsContainer.classList.remove('hide');
+    questionsContainer.classList.remove('hide'); //hide highscores as well
     
-    //QUIZ starts
+    //--------QUIZ starts HERE!-----------
+
+    //timer function
+    let timerFun = setInterval( function(){
+        let timer = document.getElementById("timer")
+        time = time - 1
+        timer.innerHTML = time
+        if (time <= 0){
+            clearInterval(timerFun)
+        }
+    },1000)    
+        
 
     //Local Var
     let question = document.getElementById("question")
@@ -62,7 +74,7 @@ let startGame = function (){
             alert('correct')
         }
         else{
-            time = time - 10000;
+            time = time - 10;
             alert('wrong')
         }
         
@@ -83,7 +95,7 @@ let startGame = function (){
             alert('correct')
         }
         else{
-            time = time - 10000;
+            time = time - 10;
             alert('wrong')
         }
         
@@ -104,7 +116,7 @@ let startGame = function (){
             alert('correct')
         }
         else{
-            time = time - 10000;
+            time = time - 10;
             alert('wrong')
         }
         
@@ -125,7 +137,7 @@ let startGame = function (){
             alert('correct')
         }
         else{
-            time = time - 10000;
+            time = time - 1;
             alert('wrong')
         }
         
@@ -146,6 +158,7 @@ let startGame = function (){
     btn3.addEventListener("click", nextQuestion3);
     btn4.addEventListener("click", nextQuestion4);
 }
+//---------------------------------------------------- part 3 ---------------------------------------------------------------------
 //All Done! - submit HS
 let finish = function (){
     questionsContainer.classList.add('hide');
