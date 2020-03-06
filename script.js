@@ -1,13 +1,13 @@
 //var buttons
 let startBtn = document.getElementById("startBtn")
-let btn1 = document.getElementById('btn1')
+//let btn1 = document.getElementById('btn1')
 let submit = document.getElementById("submit")
 let goBackBtn = document.getElementById("goBack")
 let HSbtn = document.getElementById("HS")
 
 //general Var
-let score = 20
-let timer 
+let score = 0;
+let time = 60000;
 
 //var Container Elements
 let mainContainer = document.getElementById("main")
@@ -17,12 +17,12 @@ let doneContainer = document.getElementById("done")
 //sub Containers
 let HSboard = document.getElementById('HSboard') //parent
 
-//Librarie
+//Librarie Questions
 
-let Q = [obj = {question : 'pregunta 1?', answers : ['opt1 java', 'opt2 python', 'opt3 c++', 'opt4 html']},   // Q[0].question1 Q[0].Object.keys(a) Q[0].b Q[0].c Q[0].d
-         obj = {question : 'pregunta 2?', answers : ['opt1 diego', 'opt2 nacho', 'opt3 pancho', 'opt4 nico']}, 
-         obj = {question : 'pregunta 3?', answers : ['opt1 dog', 'opt2 cat', 'opt3 monkey', 'opt4 pig']},
-         obj = {question : 'pregunta 4?', answers : ['opt1 up', 'opt2 down', 'opt3 left', 'opt4 right']}]
+let Q = [obj = {question : 'pregunta 1?', answers : ['java', 'python', 'c++', 'html', 'java']},   // Q[0].question1 target
+         obj = {question : 'pregunta 2?', answers : ['diego', 'nacho', 'pancho', 'nico', 'nacho']}, 
+         obj = {question : 'pregunta 3?', answers : ['dog', 'cat', 'monkey', 'pig', 'monkey']},
+         obj = {question : 'pregunta 4?', answers : ['up', 'down', 'left', 'right', 'right']}]
 
 
 //Functions
@@ -40,6 +40,7 @@ let startGame = function (){
     let btn3 = document.getElementById("btn3")
     let btn4 = document.getElementById("btn4")
 
+
     //Question iterator
     let i = 0;
 
@@ -49,9 +50,21 @@ let startGame = function (){
     btn2.innerHTML = Q[i].answers[1]
     btn3.innerHTML = Q[i].answers[2]
     btn4.innerHTML = Q[i].answers[3]
+    
 
     //Set Next Question 
-    let nextQuestion = function (){
+    // 1
+    let nextQuestion1 = function (){
+        //check
+
+        if (Q[i].answers[0] == Q[i].answers[4]){
+            score = score + 10;
+            alert('correct')
+        }
+        else{
+            time = time - 10000;
+            alert('wrong')
+        }
         
         //change Questions
         question.innerHTML = Q[i+1].question
@@ -60,19 +73,78 @@ let startGame = function (){
         btn3.innerHTML = Q[i+1].answers[2]
         btn4.innerHTML = Q[i+1].answers[3]
         i++
-
-        
-        
-        
-
     }
-    //click btns
-    //btn1.addEventListener("click", finish);
-    btn1.addEventListener("click", nextQuestion);
-    btn2.addEventListener("click", nextQuestion);
-    btn3.addEventListener("click", nextQuestion);
-    btn4.addEventListener("click", nextQuestion);
+    // 2
+    let nextQuestion2 = function (){
+        //check
 
+        if (Q[i].answers[1] == Q[i].answers[4]){
+            score = score + 10;
+            alert('correct')
+        }
+        else{
+            time = time - 10000;
+            alert('wrong')
+        }
+        
+        //change Questions
+        question.innerHTML = Q[i+1].question
+        btn1.innerHTML = Q[i+1].answers[0]
+        btn2.innerHTML = Q[i+1].answers[1]
+        btn3.innerHTML = Q[i+1].answers[2]
+        btn4.innerHTML = Q[i+1].answers[3]
+        i++
+    }
+    // 3
+    let nextQuestion3 = function (){
+        //check
+
+        if (Q[i].answers[2] == Q[i].answers[4]){
+            score = score + 10;
+            alert('correct')
+        }
+        else{
+            time = time - 10000;
+            alert('wrong')
+        }
+        
+        //change Questions
+        question.innerHTML = Q[i+1].question
+        btn1.innerHTML = Q[i+1].answers[0]
+        btn2.innerHTML = Q[i+1].answers[1]
+        btn3.innerHTML = Q[i+1].answers[2]
+        btn4.innerHTML = Q[i+1].answers[3]
+        i++
+    }
+    // 4
+    let nextQuestion4 = function (){
+        //check
+
+        if (Q[i].answers[3] == Q[i].answers[4]){
+            score = score + 10;
+            alert('correct')
+        }
+        else{
+            time = time - 10000;
+            alert('wrong')
+        }
+        
+        //change Questions
+        question.innerHTML = Q[i+1].question
+        btn1.innerHTML = Q[i+1].answers[0]
+        btn2.innerHTML = Q[i+1].answers[1]
+        btn3.innerHTML = Q[i+1].answers[2]
+        btn4.innerHTML = Q[i+1].answers[3]
+        i++
+    }
+    
+
+    //click next btns
+    //btn1.addEventListener("click", finish);
+    btn1.addEventListener("click", nextQuestion1);
+    btn2.addEventListener("click", nextQuestion2);
+    btn3.addEventListener("click", nextQuestion3);
+    btn4.addEventListener("click", nextQuestion4);
 }
 //All Done! - submit HS
 let finish = function (){
