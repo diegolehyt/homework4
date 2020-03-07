@@ -11,7 +11,7 @@
 
 .Timer {
     position: sticky;
-    margin-left: 600px;
+    margin-left: 500px;
     display: inline-block;
     
 }
@@ -23,6 +23,7 @@ button {
 }
 .container {
     margin: auto;
+    margin-top: 50px;
 
 }
 .submit {
