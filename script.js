@@ -13,16 +13,7 @@ let doneContainer = document.getElementById("done")
 //sub Containers
 let HSboard = document.getElementById('HSboard') //parent
 
-//change question Function
-let nextQuestion = function(){
-    question.innerHTML = Q[i+1].question
-    btn1.innerHTML = Q[i+1].answers[0]
-    btn2.innerHTML = Q[i+1].answers[1]
-    btn3.innerHTML = Q[i+1].answers[2]
-    btn4.innerHTML = Q[i+1].answers[3]
-    i++
-    return
-}
+
 
 //Librarie Questions
 
@@ -56,11 +47,13 @@ let startGame = function (){
         time = time - 1
         timer.innerHTML = time
         if (time <= 0){
+            timer.innerHTML = 0;
+            clearInterval(timerFun);
+            //timer.classList.add('hide');
             questionsContainer.classList.add('hide');
             doneContainer.classList.remove('hide');
-            clearInterval(timerFun);
             
-            
+          
         }
     },1000)    
         
@@ -71,9 +64,6 @@ let startGame = function (){
     let btn2 = document.getElementById("btn2")
     let btn3 = document.getElementById("btn3")
     let btn4 = document.getElementById("btn4")
-
-
-    
 
     //Initial Question
     question.innerHTML = Q[i].question
@@ -97,6 +87,9 @@ let startGame = function (){
             alert('wrong')
         }
         if (i == 5){
+            let timer = document.getElementById("timer");
+            clearInterval(timerFun);
+            timer.innerHTML = null;
             doneContainer.classList.remove('hide');
             questionsContainer.classList.add('hide');
         }
@@ -124,6 +117,9 @@ let startGame = function (){
             alert('wrong')
         }
         if (i == 5){
+            let timer = document.getElementById("timer");
+            clearInterval(timerFun);
+            timer.innerHTML = null;
             doneContainer.classList.remove('hide');
             questionsContainer.classList.add('hide');
         }
@@ -152,6 +148,9 @@ let startGame = function (){
         }
         
         if (i == 5){
+            let timer = document.getElementById("timer");
+            clearInterval(timerFun);
+            timer.innerHTML = null;
             doneContainer.classList.remove('hide');
             questionsContainer.classList.add('hide');
         }
@@ -180,6 +179,9 @@ let startGame = function (){
         }
 
         if (i == 5){
+            let timer = document.getElementById("timer");
+            clearInterval(timerFun);
+            timer.innerHTML = null;
             doneContainer.classList.remove('hide');
             questionsContainer.classList.add('hide');
         }
@@ -193,35 +195,40 @@ let startGame = function (){
             i++
         }
     }
-    
-    //---------------------------------------------------- part 3 ---------------------------------------------------------------------
     //click next btns
     
     btn1.addEventListener("click", nextQuestion1);
     btn2.addEventListener("click", nextQuestion2);
     btn3.addEventListener("click", nextQuestion3);
     btn4.addEventListener("click", nextQuestion4);
-
     
-
+    //---------------------------------------------------- part 3 ---------------------------------------------------------------------
     //HighScore Board      fix when time is out    
-    let goHighScores = function(){
-    doneContainer.classList.add('hide');
-    questionsContainer.classList.add('hide');
-    mainContainer.classList.add('hide');
-    highScoresContainer.classList.remove('hide');
+    let submitHighScores = function(){
+        doneContainer.classList.add('hide');
+        questionsContainer.classList.add('hide');
+        mainContainer.classList.add('hide');
+        highScoresContainer.classList.remove('hide');
 
-    //input Var
-    let initialsVal = document.getElementById("initials").value;
-    
+        //input Var
+        let initialsVal = document.getElementById("initials").value;
+        
+        //Local Storage-------------------------------------------------------------------------
+        
+        let highscoresA = [{p : initialsVal, s : score}]
+        
+        highscoresA = JSON.stringify(highscoresA)
+        localStorage.setItem('a', highscoresA)
+        //------------------------------------------------------------------------------
+        
 
-    //add new HighScore
-    let newHS = document.createElement('p');
-    newHS.setAttribute("class", "listE");
-    newHS.innerHTML = initialsVal + "----------------------------------->" + score;
-    HSboard.appendChild(newHS);
+        //add new HighScore
+        let newHS = document.createElement('p');
+        newHS.setAttribute("class", "listE");
+        newHS.innerHTML = initialsVal + "----------------------------------->" + score;
+        HSboard.appendChild(newHS);
 
-
+        
 
     }
     //Back to Main
@@ -232,9 +239,9 @@ let startGame = function (){
     }
 
     //click events
-    submit.addEventListener("click", goHighScores); //Go HighScore Board and Save initials on Board
+    submit.addEventListener("click", submitHighScores); //Go HighScore Board and Save initials on Board
     goBackBtn.addEventListener("click", goBack);
-    HSbtn.addEventListener("click", goHighScores);
+    //HSbtn.addEventListener("click", goHighScores); //delete this one
 }
 //---------------------------------------------------- part 4 ---------------------------------------------------------------------
 
