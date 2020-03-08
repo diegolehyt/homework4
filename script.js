@@ -89,7 +89,7 @@ let startGame = function (){
         if (i == 5){
             let timer = document.getElementById("timer");
             clearInterval(timerFun);
-            timer.innerHTML = null;
+            timer.innerHTML = 0;
             doneContainer.classList.remove('hide');
             questionsContainer.classList.add('hide');
         }
@@ -119,7 +119,7 @@ let startGame = function (){
         if (i == 5){
             let timer = document.getElementById("timer");
             clearInterval(timerFun);
-            timer.innerHTML = null;
+            timer.innerHTML = 0;
             doneContainer.classList.remove('hide');
             questionsContainer.classList.add('hide');
         }
@@ -150,7 +150,7 @@ let startGame = function (){
         if (i == 5){
             let timer = document.getElementById("timer");
             clearInterval(timerFun);
-            timer.innerHTML = null;
+            timer.innerHTML = 0;
             doneContainer.classList.remove('hide');
             questionsContainer.classList.add('hide');
         }
@@ -181,7 +181,7 @@ let startGame = function (){
         if (i == 5){
             let timer = document.getElementById("timer");
             clearInterval(timerFun);
-            timer.innerHTML = null;
+            timer.innerHTML = 0;
             doneContainer.classList.remove('hide');
             questionsContainer.classList.add('hide');
         }
@@ -215,11 +215,26 @@ let startGame = function (){
         
         //Local Storage-------------------------------------------------------------------------
         
-        let highscoresA = [{p : initialsVal, s : score}]
+        if (localStorage.getItem('HS') === null){
+            let highscoresA = [{p : initialsVal, s : score}];
+            highscoresA = JSON.stringify(highscoresA);
+            localStorage.setItem('HS', highscoresA);
+            
+        }
+        else {
+            
+            highscoresA = localStorage.getItem('HS');
+            highscoresA = JSON.parse(highscoresA);
+            highscoresA.push({p : initialsVal, s : score});
+            highscoresA = JSON.stringify(highscoresA);
+            localStorage.setItem('HS', highscoresA);
+            
+        }
+
+
         
-        highscoresA = JSON.stringify(highscoresA)
-        localStorage.setItem('a', highscoresA)
-        //------------------------------------------------------------------------------
+        
+        //------------------------------------------------------------------------------ go high score-----------------
         
 
         //add new HighScore
