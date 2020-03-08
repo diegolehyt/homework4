@@ -13,6 +13,21 @@ let doneContainer = document.getElementById("done")
 //sub Containers
 let HSboard = document.getElementById('HSboard') //parent
 
+//Functions
+
+let goHighScores = function(){
+    doneContainer.classList.add('hide');
+    questionsContainer.classList.add('hide');
+    mainContainer.classList.add('hide');
+    highScoresContainer.classList.remove('hide');
+
+}
+let gBack = function(){
+    
+    location.reload(true);
+}
+
+
 
 
 //Librarie Questions
@@ -205,10 +220,7 @@ let startGame = function (){
     //---------------------------------------------------- part 3 ---------------------------------------------------------------------
     //HighScore Board      fix when time is out    
     let submitHighScores = function(){
-        doneContainer.classList.add('hide');
-        questionsContainer.classList.add('hide');
-        mainContainer.classList.add('hide');
-        highScoresContainer.classList.remove('hide');
+        
 
         //input Var
         let initialsVal = document.getElementById("initials").value;
@@ -230,13 +242,9 @@ let startGame = function (){
             localStorage.setItem('HS', highscoresA);
             
         }
-
-
-        
-        
         //------------------------------------------------------------------------------ go high score-----------------
+        goHighScores();
         
-
         //add new HighScore
         let newHS = document.createElement('p');
         newHS.setAttribute("class", "listE");
@@ -260,7 +268,9 @@ let startGame = function (){
 }
 //---------------------------------------------------- part 4 ---------------------------------------------------------------------
 
+goBackBtn.addEventListener("click", gBack);
 startBtn.addEventListener("click", startGame);
+HSbtn.addEventListener("click", goHighScores);
 
 
 
