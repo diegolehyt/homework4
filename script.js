@@ -4,6 +4,7 @@ let startBtn = document.getElementById("startBtn")
 let submit = document.getElementById("submit")
 let goBackBtn = document.getElementById("goBack")
 let HSbtn = document.getElementById("HS")
+let clearHSbtn = document.getElementById("clearHS")
 
 //var Container Elements
 let mainContainer = document.getElementById("main")
@@ -12,6 +13,7 @@ let highScoresContainer = document.getElementById("highScores")
 let doneContainer = document.getElementById("done")
 //sub Containers
 let HSboard = document.getElementById('HSboard') //parent
+let scoreNumber = document.getElementById('scoreNumber')
 
 //Functions
 
@@ -20,11 +22,28 @@ let goHighScores = function(){
     questionsContainer.classList.add('hide');
     mainContainer.classList.add('hide');
     highScoresContainer.classList.remove('hide');
+    HSbtn.innerHTML = null;
+    //build HS Board
+    HS = localStorage.getItem('HS');
+    HS = JSON.parse(HS);
+    HSL = HS.length;
+
+    for (let j = 0 ; j < HSL ; j++){
+        let newHS = document.createElement('p');
+        newHS.setAttribute("class", "listE");
+        newHS.innerHTML = HS[j].p + "----------------------------------->" + HS[j].s;
+        HSboard.appendChild(newHS);
+
+    }
 
 }
 let gBack = function(){
     
     location.reload(true);
+}
+let clearHS = function(){
+    localStorage.clear();
+    HSboard.innerHTML = null;
 }
 
 
@@ -44,6 +63,7 @@ let Q = [obj = {question : 'pregunta 1?', answers : ['java', 'python', 'c++', 'h
 
 //Question Container
 let startGame = function (){
+    HSbtn.innerHTML = null;
     mainContainer.classList.add('hide');
     questionsContainer.classList.remove('hide'); //hide highscores button as well
     
@@ -63,8 +83,8 @@ let startGame = function (){
         timer.innerHTML = time
         if (time <= 0){
             timer.innerHTML = 0;
+            scoreNumber.innerHTML = score;
             clearInterval(timerFun);
-            //timer.classList.add('hide');
             questionsContainer.classList.add('hide');
             doneContainer.classList.remove('hide');
             
@@ -105,6 +125,7 @@ let startGame = function (){
             let timer = document.getElementById("timer");
             clearInterval(timerFun);
             timer.innerHTML = 0;
+            scoreNumber.innerHTML = score;
             doneContainer.classList.remove('hide');
             questionsContainer.classList.add('hide');
         }
@@ -135,6 +156,7 @@ let startGame = function (){
             let timer = document.getElementById("timer");
             clearInterval(timerFun);
             timer.innerHTML = 0;
+            scoreNumber.innerHTML = score;
             doneContainer.classList.remove('hide');
             questionsContainer.classList.add('hide');
         }
@@ -166,6 +188,7 @@ let startGame = function (){
             let timer = document.getElementById("timer");
             clearInterval(timerFun);
             timer.innerHTML = 0;
+            scoreNumber.innerHTML = score;
             doneContainer.classList.remove('hide');
             questionsContainer.classList.add('hide');
         }
@@ -197,6 +220,7 @@ let startGame = function (){
             let timer = document.getElementById("timer");
             clearInterval(timerFun);
             timer.innerHTML = 0;
+            scoreNumber.innerHTML = score;
             doneContainer.classList.remove('hide');
             questionsContainer.classList.add('hide');
         }
@@ -225,7 +249,7 @@ let startGame = function (){
         //input Var
         let initialsVal = document.getElementById("initials").value;
         
-        //Local Storage-------------------------------------------------------------------------
+        //Set HS in Local Storage-------------------------------------------------------------------------
         
         if (localStorage.getItem('HS') === null){
             let highscoresA = [{p : initialsVal, s : score}];
@@ -245,11 +269,6 @@ let startGame = function (){
         //------------------------------------------------------------------------------ go high score-----------------
         goHighScores();
         
-        //add new HighScore
-        let newHS = document.createElement('p');
-        newHS.setAttribute("class", "listE");
-        newHS.innerHTML = initialsVal + "----------------------------------->" + score;
-        HSboard.appendChild(newHS);
 
         
 
@@ -271,6 +290,7 @@ let startGame = function (){
 goBackBtn.addEventListener("click", gBack);
 startBtn.addEventListener("click", startGame);
 HSbtn.addEventListener("click", goHighScores);
+clearHSbtn.addEventListener("click", clearHS);
 
 
 
