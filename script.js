@@ -1,4 +1,4 @@
-//-------------------------------------------------part 1-------------------------------------------------------------------
+//---------------------------------------------------------part 1-------------------------------------------------------------------
 //var buttons
 let startBtn = document.getElementById("startBtn")
 let submit = document.getElementById("submit")
@@ -16,7 +16,7 @@ let HSboard = document.getElementById('HSboard') //parent
 let scoreNumber = document.getElementById('scoreNumber')
 let CoW = document.getElementById('CoW')
 
-//Functions
+//Global Functions
 
 let goHighScores = function(){
     doneContainer.classList.add('hide');
@@ -32,7 +32,7 @@ let goHighScores = function(){
     for (let j = 0 ; j < HSL ; j++){
         let newHS = document.createElement('p');
         newHS.setAttribute("class", "listE");
-        newHS.innerHTML = HS[j].p + "----------------------------------->" + HS[j].s;
+        newHS.innerHTML = HS[j].p + "--------------------------------------------------------------------->" + HS[j].s;
         HSboard.appendChild(newHS);
 
     }
@@ -49,26 +49,26 @@ let clearHS = function(){
 
 //Librarie Questions
 
-let Q = [obj = {question : 'pregunta 1?', answers : ['java', 'python', 'c++', 'html', 'java']},   // Q[0].question target
-         obj = {question : 'pregunta 2?', answers : ['diego', 'nacho', 'pancho', 'nico', 'nacho']}, 
-         obj = {question : 'pregunta 3?', answers : ['dog', 'cat', 'monkey', 'pig', 'monkey']},
-         obj = {question : 'pregunta 4?', answers : ['up', 'down', 'left', 'right', 'right']},
-         obj = {question : 'pregunta 5?', answers : ['garlic', 'celery', 'potato', 'carrot', 'garlic']},
-         obj = {question : 'pregunta 6?', answers : ['yellow', 'red', 'black', 'purple', 'red']}]
+let Q = [obj = {question : '1. How would you said "HI" to someone?', answers : ['Hola', 'Chao', 'Bueno', 'Donde', 'Hola']},   // Q[0].question target
+         obj = {question : '2. if is before noon you should said "Tenga un buen ___ amigo!"', answers : ['Once', 'Dia', 'Noche', 'Tarde', 'Dia']}, 
+         obj = {question : '3. Whats the translation of "DragonFly" insect?', answers : ['Mariposa', 'Cuncuna', 'Libelula', 'Mosquito', 'Libelula']},
+         obj = {question : '4. Which of these Countries dose not speak Spanish?', answers : ['Bolivia', 'Paraguay', 'Chile', 'Brazil', 'Brazil']},
+         obj = {question : '5. How can ask for a glass of water? "un vaso de ___ porfavor!"', answers : ['Agua', 'Cerveza', 'Vino', 'Bebida', 'Agua']},
+         obj = {question : '6. Last Question!, "How much is 9 + 5?"', answers : ['Diecinueve', 'Catorce', 'Trece', 'Veinticuatro', 'Catorce']}]
 
 
-//-------------------------------------------------------part 2 ----------------------------------------------------
+//-------------------------------------------------------part 2 ------------------------------------------------------------------
 
-//Question Container
+//Question Container Function
 let startGame = function (){
     HSbtn.innerHTML = null;
     mainContainer.classList.add('hide');
-    questionsContainer.classList.remove('hide'); //hide highscores button as well
+    questionsContainer.classList.remove('hide'); 
     
-    //--------QUIZ starts HERE!-----------
+    //----------------------------------------------QUIZ starts HERE!--------------------------------------------------------------
 
     //set timeDown Var
-    let time = 30; //go back to 60 after
+    let time = 60; 
     //score var
     score = 0;
     //Question iterator
@@ -233,20 +233,19 @@ let startGame = function (){
         }
     }
     //click next btns
-    
     btn1.addEventListener("click", nextQuestion1);
     btn2.addEventListener("click", nextQuestion2);
     btn3.addEventListener("click", nextQuestion3);
     btn4.addEventListener("click", nextQuestion4);
     
     //---------------------------------------------------- part 3 ---------------------------------------------------------------------
-    //HighScore Board      fix when time is out    
+    //HighScore Board Function   
     let submitHighScores = function(){
         
         //input Var
         let initialsVal = document.getElementById("initials").value;
         
-        //Set HS in Local Storage-------------------------------------------------------------------------
+        //Set HS in Local Storage
         
         if (localStorage.getItem('HS') === null){
             let highscoresA = [{p : initialsVal, s : score}];
@@ -273,13 +272,13 @@ let startGame = function (){
         location.reload(true)
     }
 
-    //click events
+    //Local click events
     submit.addEventListener("click", submitHighScores); //Go HighScore Board and Save initials on Board
     goBackBtn.addEventListener("click", goBack);
-    //HSbtn.addEventListener("click", goHighScores); //delete this one
+    
 }
-//---------------------------------------------------- part 4 ---------------------------------------------------------------------
-//click events
+//--------------------------------------------------------- part 4 ---------------------------------------------------------------------
+//Global click events
 goBackBtn.addEventListener("click", gBack);
 startBtn.addEventListener("click", startGame);
 HSbtn.addEventListener("click", goHighScores);

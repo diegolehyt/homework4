@@ -14,7 +14,7 @@
 .Timer {
     display: inline-block;
     position: sticky;
-    margin-left: 500px;
+    margin-left: 400px;
     
     
 }
@@ -39,10 +39,4 @@ button {
     background-color: lightgrey;
 
 }
-/*640*/
-@media only screen and (min-width: 640px) {
-    .Timer {
-        margin-top:
 
-    }
-}
