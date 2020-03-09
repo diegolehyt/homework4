@@ -1,18 +1,21 @@
+/*Hide Div class*/
 .hide {
     display: none;
 }
-
+/*html classes*/
 .HS {
+    display: inline-block;
     position: sticky;
     margin-left: 50px;
-    display: inline-block;
+    
 
 }
 
 .Timer {
+    display: inline-block;
     position: sticky;
     margin-left: 500px;
-    display: inline-block;
+    
     
 }
 
@@ -31,7 +34,15 @@ button {
     color: white;
 
 }
+/*style for new HS*/
 .listE {
     background-color: lightgrey;
 
+}
+/*640*/
+@media only screen and (min-width: 640px) {
+    .Timer {
+        margin-top:
+
+    }
 }

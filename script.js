@@ -14,6 +14,7 @@ let doneContainer = document.getElementById("done")
 //sub Containers
 let HSboard = document.getElementById('HSboard') //parent
 let scoreNumber = document.getElementById('scoreNumber')
+let CoW = document.getElementById('CoW')
 
 //Functions
 
@@ -45,9 +46,6 @@ let clearHS = function(){
     localStorage.clear();
     HSboard.innerHTML = null;
 }
-
-
-
 
 //Librarie Questions
 
@@ -87,8 +85,6 @@ let startGame = function (){
             clearInterval(timerFun);
             questionsContainer.classList.add('hide');
             doneContainer.classList.remove('hide');
-            
-          
         }
     },1000)    
         
@@ -115,11 +111,13 @@ let startGame = function (){
 
         if (Q[i].answers[0] == Q[i].answers[4]){
             score = score + 10;
-            alert('correct')
+            CoW.innerHTML = 'Correct!'
+            
         }
         else{
             time = time - 10;
-            alert('wrong')
+            CoW.innerHTML = 'Wrong!'
+            
         }
         if (i == 5){
             let timer = document.getElementById("timer");
@@ -146,11 +144,11 @@ let startGame = function (){
 
         if (Q[i].answers[1] == Q[i].answers[4]){
             score = score + 10;
-            alert('correct')
+            CoW.innerHTML = 'Correct!'
         }
         else{
             time = time - 10;
-            alert('wrong')
+            CoW.innerHTML = 'Wrong!';
         }
         if (i == 5){
             let timer = document.getElementById("timer");
@@ -177,11 +175,11 @@ let startGame = function (){
 
         if (Q[i].answers[2] == Q[i].answers[4]){
             score = score + 10;
-            alert('correct')
+            CoW.innerHTML = 'Correct!';
         }
         else{
             time = time - 10;
-            alert('wrong')
+            CoW.innerHTML = 'Wrong!';
         }
         
         if (i == 5){
@@ -209,11 +207,11 @@ let startGame = function (){
 
         if (Q[i].answers[3] == Q[i].answers[4]){
             score = score + 10;
-            alert('correct');
+            CoW.innerHTML = 'Correct!';
         }
         else{
             time = time - 10;
-            alert('wrong');
+            CoW.innerHTML = 'Wrong!';
         }
 
         if (i == 5){
@@ -245,7 +243,6 @@ let startGame = function (){
     //HighScore Board      fix when time is out    
     let submitHighScores = function(){
         
-
         //input Var
         let initialsVal = document.getElementById("initials").value;
         
@@ -266,12 +263,8 @@ let startGame = function (){
             localStorage.setItem('HS', highscoresA);
             
         }
-        //------------------------------------------------------------------------------ go high score-----------------
+        //go high score function call, after submit 
         goHighScores();
-        
-
-        
-
     }
     //Back to Main
     let goBack = function(){
@@ -286,7 +279,7 @@ let startGame = function (){
     //HSbtn.addEventListener("click", goHighScores); //delete this one
 }
 //---------------------------------------------------- part 4 ---------------------------------------------------------------------
-
+//click events
 goBackBtn.addEventListener("click", gBack);
 startBtn.addEventListener("click", startGame);
 HSbtn.addEventListener("click", goHighScores);
